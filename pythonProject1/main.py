@@ -1,14 +1,23 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import hashlib
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def calculate_hash(data):
+    # Преобразуем строку данных в байтовый формат
+    data_bytes = data.encode('utf-8')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Создаем объект хеша SHA-256
+    hasher = hashlib.sha256()
+
+    # Обновляем хеш с данными
+    hasher.update(data_bytes)
+
+    # Получаем хеш в виде шестнадцатеричной строки
+    hash_result = hasher.hexdigest()
+
+    return hash_result
+
+
+# Пример использования функции для вычисления хеша для строки
+data_to_hash = "Hello, World!"
+hash_result = calculate_hash(data_to_hash)
+print("Хеш строки '{}': {}".format(data_to_hash, hash_result))
